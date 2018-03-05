@@ -25,23 +25,14 @@ class Grapher(object):
             else:
                 for sub in tree.children:
                     self.plot_graph(parent_node, parent_type, sub)
-                    # self.plot_graph(parent_node, "AND", sub)
         elif isinstance(tree, parser.OrNode):
             self.graph.node(parent_node, parent_type)
-            # if parent_type == "AND":
-            #     self.graph.node(parent_node) # Remove and nodes
-            # else:
-            #     self.graph.node(parent_node, parent_type)
             current_idx = self.idx
             self.graph.edge(parent_node, str(current_idx))
             for sub in tree.children:
                 self.plot_graph(str(current_idx), "OR", sub)
         elif isinstance(tree, parser.Course):
             self.graph.node(parent_node, parent_type)
-            # if parent_type == "AND":
-            #     self.graph.node(parent_node)
-            # else:
-            #     self.graph.node(parent_node, parent_type)
             self.graph.edge(parent_node, tree.name)
         else:
             exit(1) # you done fucked up.
