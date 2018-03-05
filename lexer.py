@@ -21,6 +21,7 @@ class Lexer(object):
 
     def lex(self):
         # tokenizer
+        self.tokens = []
         while len(self.text) > 0:
             if self.text[0] == "(":
                 # self.tokens.append(Token(TokenTypes.COMMENT, self.text[1:len(self.text) - 1])) let the parser do the job
