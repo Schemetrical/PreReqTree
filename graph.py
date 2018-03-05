@@ -16,12 +16,16 @@ class Grapher(object):
     def plot_graph(self, parent_node, parent_type, tree):
         self.idx += 1
         if isinstance(tree, parser.AndNode):
-            self.graph.node(parent_node, parent_type)
-            current_idx = self.idx
-            self.graph.edge(parent_node, str(current_idx))
-            for sub in tree.children:
-                self.plot_graph(str(current_idx), "AND", sub)
-                # self.plot_graph(parent_node, "AND", sub)
+            if parent_type == "OR": # If OR -> AND, you cannot simplify the graph
+                self.graph.node(parent_node, parent_type)
+                current_idx = self.idx
+                self.graph.edge(parent_node, str(current_idx))
+                for sub in tree.children:
+                    self.plot_graph(str(current_idx), "AND", sub)
+            else:
+                for sub in tree.children:
+                    self.plot_graph(parent_node, parent_type, sub)
+                    # self.plot_graph(parent_node, "AND", sub)
         elif isinstance(tree, parser.OrNode):
             self.graph.node(parent_node, parent_type)
             # if parent_type == "AND":
@@ -42,4 +46,8 @@ class Grapher(object):
         else:
             exit(1) # you done fucked up.
 
-
+    def render(self):
+        src = self.graph.source
+        # can do something here to remove duplicate items
+        graph = gv.Source(src)
+        graph.render(filename='img/g1', view=True)

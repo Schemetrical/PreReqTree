@@ -52,7 +52,7 @@ for course, prerequisites in input.items():
         tree = parser.parse()
         grapher.plot_graph(course, course, tree)
     grapher.graph.attr('edge', color = str(random.uniform(0, 1)) + " 1.000 0.7")
-grapher.graph.render(filename='img/g1', view=True)
+grapher.render()
 
 
 # lexer.text = "One of MATH 152, MATH 221, MATH 223 and one of MATH 200, MATH 217, MATH 226, MATH 253, MATH 263 and one of STAT 200, STAT 203, STAT 241, STAT 251, MATH 302, STAT 302, MATH 318, BIOL 300;  and either (a) CPSC 221 or (b) all of CPSC 260, EECE 320 and one of CPSC 210, EECE 210, EECE 309."
