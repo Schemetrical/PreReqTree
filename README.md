@@ -11,6 +11,6 @@ Todo:
 - Web interface
 - Tie to database 
 
-###Sample Output
+### Sample Output
 
 ![Output](https://i.imgur.com/21FsKOE.png)
