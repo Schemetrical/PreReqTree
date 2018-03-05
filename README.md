@@ -10,3 +10,7 @@ Todo:
 - Better coloring
 - Web interface
 - Tie to database 
+
+###Sample Output
+
+![Output](https://i.imgur.com/21FsKOE.png)
